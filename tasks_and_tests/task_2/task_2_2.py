@@ -48,22 +48,22 @@ class BSTCheckIfEqual(BST):
 
 
 def test_check_if_equal():
-    node_root = BSTNode(8, "8", None)
+    node_root = BSTNode(8, 8, None)
     bst = BSTCheckIfEqual(node_root)
-    bst.AddKeyValue(4, "4")
-    bst.AddKeyValue(12, "12")
-    bst.AddKeyValue(2, "2")
-    bst.AddKeyValue(6, "6")
+    bst.AddKeyValue(4, 4)
+    bst.AddKeyValue(12, 12)
+    bst.AddKeyValue(2, 2)
+    bst.AddKeyValue(6, 6)
 
-    bst_2 = BSTCheckIfEqual(BSTNode(8, "8", None))
-    bst_2.AddKeyValue(4, "4")
-    bst_2.AddKeyValue(12, "12")
-    bst_2.AddKeyValue(2, "2")
-    bst_2.AddKeyValue(6, "6")
+    bst_2 = BSTCheckIfEqual(BSTNode(8, 8, None))
+    bst_2.AddKeyValue(4, 4)
+    bst_2.AddKeyValue(12, 12)
+    bst_2.AddKeyValue(2, 2)
+    bst_2.AddKeyValue(6, 6)
 
     assert bst.CheckIfEqual(bst_2) is True
 
-    bst_2.AddKeyValue(10, "10")
+    bst_2.AddKeyValue(10, 10)
     assert bst.CheckIfEqual(bst_2) is False
 
 
@@ -109,16 +109,16 @@ class BSTFindWayOfLength(BST):
 
 
 def test_find_way_of_length():
-    node_root = BSTNode(8, "8", None)
+    node_root = BSTNode(8, 8, None)
     bst = BSTFindWayOfLength(node_root)
     assert len(bst.FindWayOfLength(1)) == 1
 
-    bst.AddKeyValue(4, "4")
-    bst.AddKeyValue(12, "12")
+    bst.AddKeyValue(4, 4)
+    bst.AddKeyValue(12, 12)
     assert len(bst.FindWayOfLength(2)) == 2
 
-    bst.AddKeyValue(2, "2")
-    bst.AddKeyValue(6, "6")
+    bst.AddKeyValue(2, 2)
+    bst.AddKeyValue(6, 6)
     assert len(bst.FindWayOfLength(3)) == 2
 
 
