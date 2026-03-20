@@ -7,16 +7,16 @@ class aBST:
         tree_size = 2 ** (depth + 1)
         self.Tree: list[int | None] = [None] * tree_size  # массив ключей
 
-    def FindKeyIndexRecursive(self, current_index: int, key: int) -> tuple[bool, int]:
+    def FindKeyIndexRecursive(self, current_index: int, key: int) -> int | None:
         if current_index >= len(self.Tree) - 1:
-            return False, -1
+            return None
 
         tree_num = self.Tree[current_index]
         if tree_num is None:
-            return False, current_index
+            return -current_index
 
         elif tree_num == key:
-            return True, current_index
+            return current_index
 
         elif tree_num > key:
             next_index = (current_index * 2) + 1
@@ -25,17 +25,22 @@ class aBST:
             next_index = (current_index * 2) + 2
             return self.FindKeyIndexRecursive(next_index, key)
 
-        return False, -1
-
     def FindKeyIndex(self, key) -> int | None:
-        is_found, index = self.FindKeyIndexRecursive(0, key)
+        return self.FindKeyIndexRecursive(0, key)
         # ищем в массиве индекс ключа, None если не найден
-        return index if is_found else None
 
     def AddKey(self, key) -> int:
-        is_found, index = self.FindKeyIndexRecursive(0, key)
-        if not is_found and index != -1:
+        index = self.FindKeyIndex(key)
+        if index is None:
+            index = -1
+
+        elif index == 0 and self.Tree[0] is None:
             self.Tree[index] = key
+
+        elif index < 0:
+            index = abs(index)
+            self.Tree[index] = key
+
         return index
         # индекс добавленного/существующего ключа или -1 если не удалось
 
