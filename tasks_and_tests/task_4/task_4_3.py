@@ -15,6 +15,7 @@ def test_aBST_depth_0():
 def test_aBST_depth_1():
     tree = aBST(1)
     assert tree.AddKey(50) == 0
+    assert tree.FindKeyIndex(25) is None
     assert tree.AddKey(25) == 1
     assert tree.AddKey(75) == 2
 
@@ -86,3 +87,7 @@ def test_aBST_wide_all_nodes():
     assert wide_all_nodes[3][5] == 68
     assert wide_all_nodes[3][6] == 79
     assert wide_all_nodes[3][7] == 92
+
+# tree = aBST(1)
+# assert tree.AddKey(50) == 0
+# assert tree.FindKeyIndex(25) is None
