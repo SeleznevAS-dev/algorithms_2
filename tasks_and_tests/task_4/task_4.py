@@ -4,11 +4,11 @@ import math
 class aBST:
     def __init__(self, depth):
         # правильно рассчитайте размер массива для дерева глубины depth:
-        tree_size = 2 ** (depth + 1)
+        tree_size = 2 ** (depth + 1) - 1
         self.Tree: list[int | None] = [None] * tree_size  # массив ключей
 
     def FindKeyIndexRecursive(self, current_index: int, key: int) -> int | None:
-        if current_index >= len(self.Tree) - 1:
+        if current_index >= len(self.Tree):
             return None
 
         tree_num = self.Tree[current_index]
