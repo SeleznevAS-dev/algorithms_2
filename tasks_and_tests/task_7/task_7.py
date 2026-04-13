@@ -5,15 +5,11 @@ class Heap:
     def MakeHeap(self, a: list[int], depth: int):
         # создаём массив кучи HeapArray из заданного
         # размер массива выбираем на основе глубины depth
-        a.sort()
-        a = a[::-1]
         heap_size = 2 ** (depth + 1) - 1
         self.HeapArray = [None] * heap_size
 
-        index = 0
-        for num in a:
-            self.HeapArray[index] = num
-            index += 1
+        for i in a:
+            self.Add(i)
 
     def SiftDown(self, index: int):
         if index >= len(self.HeapArray):
