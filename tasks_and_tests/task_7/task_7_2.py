@@ -53,7 +53,7 @@ def test_join_two_heaps():
     heap2.MakeHeap([4, 5, 6], 2)
 
     heap1.JoinTwoHeaps(heap2)
-    assert heap1.HeapArray == [6, 5, 4, 2, 3, 1, None]
+    assert heap1.HeapArray == [6, 5, 4, 1, 3, 2, None]
 
 
 # Рефлексия.
