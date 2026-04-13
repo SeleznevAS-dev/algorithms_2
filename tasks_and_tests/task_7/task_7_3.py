@@ -4,7 +4,7 @@ from .task_7 import Heap
 def test_make_heap():
     heap = Heap()
     heap.MakeHeap([1, 2, 3, 4, 5, 6, 7], 2)
-    assert heap.HeapArray == [7, 6, 5, 4, 3, 2, 1]
+    assert heap.HeapArray == [7, 4, 6, 1, 3, 2, 5]
 
 
 def test_get_max():
@@ -41,7 +41,7 @@ def test_add():
 def test_is_heap_correct():
     heap = Heap()
     heap.MakeHeap([1, 2, 3, 4, 5, 6, 7], 2)
-    assert heap.HeapArray == [7, 6, 5, 4, 3, 2, 1]
+    assert heap.HeapArray == [7, 4, 6, 1, 3, 2, 5]
 
     heap.GetMax()
     assert heap.HeapArray == [6, 4, 5, 1, 3, 2, None]
