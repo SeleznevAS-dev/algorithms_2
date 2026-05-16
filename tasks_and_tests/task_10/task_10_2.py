@@ -1,8 +1,4 @@
 from typing import Optional
-import os
-import sys
-
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "task_10"))
 
 from .task_10 import SimpleGraph, Vertex
 
