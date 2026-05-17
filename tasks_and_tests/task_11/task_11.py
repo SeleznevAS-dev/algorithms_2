@@ -184,50 +184,55 @@ class SimpleGraph:
 
         queue.enqueue(VFrom)
 
+        queue_history = []
+
         while True:
             is_found = False
             if queue.size() == 0:
                 break
 
             VFrom = queue.dequeue()
+            if self.vertex[VFrom].Hit is True:
+                continue
+
+            queue_history.append(VFrom)
+
             for i in range(self.max_vertex):
                 if i == VFrom:
                     continue
 
+                if self.m_adjacency[VFrom][i] == 0:
+                    continue
+
                 if (
-                    self.m_adjacency[VFrom][i] == 1
-                    and self.vertex[i].Hit is False  # type: ignore
+                    self.vertex[i].Hit is False  # type: ignore
                     and i == VTo
                 ):
-                    self.vertex[VFrom].Hit = True
                     self.vertex[VTo].Hit = True  # type: ignore
+                    queue_history.append(i)
                     is_found = True
                     break
 
                 elif (
-                    self.m_adjacency[VFrom][i] == 1 and self.vertex[i].Hit is False  # type: ignore
+                    self.vertex[i].Hit is False  # type: ignore
                 ):
                     queue.enqueue(i)
+
+            self.vertex[VFrom].Hit = True
 
             if is_found is True:
                 break
 
-            self.vertex[VFrom].Hit = True
-
         if is_found is False:
             return result
 
-        while VTo != VFrom_start:
-            result.append(self.vertex[VTo])
-            for i in range(self.max_vertex):
-                if i == VTo:
-                    continue
+        VFrom = VFrom_start
 
-                if (
-                    self.m_adjacency[i][VTo] == 1
-                    and self.vertex[i].Hit is True  # type: ignore
-                    and self.vertex[i] not in result
-                ):
+        while VTo != VFrom:
+            last_queue = queue_history.pop(-1)
+            for i in queue_history:
+                if self.m_adjacency[last_queue][i] == 1:
+                    result.append(self.vertex[last_queue])
                     VTo = i
                     break
 
