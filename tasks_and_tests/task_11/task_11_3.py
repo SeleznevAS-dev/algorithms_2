@@ -45,3 +45,16 @@ def test_breadth_first_search():
 
     result = simple_graph.BreadthFirstSearch(0, 2)
     assert result == [simple_graph.vertex[0], simple_graph.vertex[2]]
+
+    result = simple_graph.BreadthFirstSearch(1, 2)
+    assert result == [
+        simple_graph.vertex[1],
+        simple_graph.vertex[0],
+        simple_graph.vertex[2],
+    ]
+    result = simple_graph.BreadthFirstSearch(2, 1)
+    assert result == [
+        simple_graph.vertex[2],
+        simple_graph.vertex[0],
+        simple_graph.vertex[1],
+    ]
