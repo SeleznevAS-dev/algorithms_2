@@ -44,6 +44,10 @@ def test_FindMaxLengthPath():
 
     assert FindMaxLengthPath(simple_graph) == 3
 
+    simple_graph.RemoveEdge(0, 1)
+
+    assert FindMaxLengthPath(simple_graph) == 3
+
 
 # Номер задания на курсе: 11
 # Номер задачи из задания: 3
